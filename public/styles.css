@@ -534,10 +534,13 @@ section { scroll-margin-top: 88px; }
         ostatní ustoupí do pozadí (--prom 0..1 počítá JS každý frame) ---- */
 .js-steps .steps__progress { height: 0; }
 .js-steps .step__badge {
-  transition: transform .15s ease-out, opacity .15s ease-out;
+  transition: transform .15s ease-out, border-color .15s ease-out;
   transform: scale(calc(.86 + var(--prom, 0) * .26));
-  opacity: calc(.5 + var(--prom, 0) * .5);
+  /* výplň zůstává neprůhledná, aby čára neprosvítala pod odznakem;
+     „ustoupení do pozadí" děláme zesvětlením obrysu a vyblednutím ikony */
+  border-color: color-mix(in srgb, var(--brand-accent) calc(20% + var(--prom, 0) * 80%), var(--james-violet-200));
 }
+.js-steps .step__badge svg { opacity: calc(.4 + var(--prom, 0) * .6); }
 .js-steps .step__content {
   transition: transform .15s ease-out, opacity .15s ease-out;
   transform: scale(calc(.96 + var(--prom, 0) * .06));
