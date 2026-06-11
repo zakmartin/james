@@ -474,51 +474,69 @@ section { scroll-margin-top: 88px; }
   100% { filter: drop-shadow(0 0 0 rgba(124,58,237,0)); }
 }
 
-/* ===== HOW IT WORKS — animovaná timeline ===== */
-.steps { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--gap); }
+/* ===== HOW IT WORKS — vertikální timeline (čára se plní scrollem) =====
+   .steps je sloupec; .step = řádek [odznak | obsah], odznak sedí na čáře.
+   Bez JS / u reduced-motion je vše „dosvícené" a čára plná (statika).
+   S JS (.js-steps) skript řídí výšku .steps__progress podle scrollu a
+   každému kroku přepíná .step--on, jakmile k němu čára dorazí. */
+.steps { position: relative; max-width: 760px; margin-inline: auto; }
+
 .steps__track {
-  position: absolute; top: 32px; left: 32px; right: 32px; height: 3px;
-  background: var(--james-violet-200); border-radius: 3px; overflow: hidden;
+  position: absolute; left: 34px; top: 36px; bottom: 0; width: 4px;
+  background: var(--james-violet-200); border-radius: 4px; overflow: hidden;
 }
 .steps__progress {
-  display: block; height: 100%; width: 0;
-  background: linear-gradient(90deg, var(--brand-accent), var(--james-accent-2));
-  transition: width 1.4s cubic-bezier(.65,0,.35,1) .15s;
+  display: block; width: 100%; height: 100%;   /* plná = fallback bez JS */
+  background: linear-gradient(180deg, var(--brand-accent), var(--james-accent-2));
+  border-radius: 4px;
 }
-.steps.is-active .steps__progress { width: 100%; }
 
-.step { position: relative; opacity: 0; transform: translateY(30px); transition: opacity .6s ease, transform .6s ease; transition-delay: calc(var(--i) * 140ms); }
-.steps.is-active .step { opacity: 1; transform: none; }
+.step {
+  position: relative;
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  column-gap: 32px;
+  padding-bottom: 60px;
+}
+.step:last-child { padding-bottom: 0; }
 
 .step__badge {
-  width: 66px; height: 66px; border-radius: 50%;
+  grid-column: 1; grid-row: 1 / span 3; align-self: start;
+  width: 72px; height: 72px; border-radius: 50%;
   display: grid; place-items: center;
-  background: #fff; border: 2px solid var(--james-violet-200);
-  color: var(--brand-accent);
   position: relative; z-index: 1;
-  transform: scale(.5); opacity: 0;
-  transition: transform .55s cubic-bezier(.34,1.56,.64,1), opacity .4s ease, background .5s ease, border-color .5s ease, color .5s ease, box-shadow .5s ease;
-  transition-delay: calc(var(--i) * 140ms + 120ms);
-}
-.steps.is-active .step__badge {
-  transform: scale(1); opacity: 1;
   background: linear-gradient(145deg, var(--brand-accent), var(--james-accent-2));
-  border-color: transparent; color: #fff;
-  box-shadow: 0 14px 30px -10px rgba(124,58,237,.6);
+  border: 2px solid transparent; color: #fff;
+  box-shadow: 0 16px 34px -12px rgba(124,58,237,.6);
+  transition: transform .5s cubic-bezier(.34,1.56,.64,1),
+              background .5s ease, border-color .5s ease, color .5s ease, box-shadow .5s ease;
 }
-.step__badge svg { width: 30px; height: 30px; }
+.step__badge svg { width: 32px; height: 32px; }
 
 .step__kicker {
-  display: inline-block; margin: 22px 0 6px;
-  font-family: var(--f-ui); font-size: 12px; font-weight: 700;
+  grid-column: 2; align-self: start;
+  display: inline-block; margin: 0 0 6px;
+  font-family: var(--f-ui); font-size: 13px; font-weight: 700;
   letter-spacing: .14em; text-transform: uppercase; color: var(--brand-accent);
 }
-.step h3 { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
-.step p { font-size: 15px; color: var(--text-muted); }
+.step h3 { grid-column: 2; font-size: 24px; font-weight: 700; margin: 0 0 8px; }
+.step p  { grid-column: 2; font-size: 16px; color: var(--text-muted); max-width: 54ch; margin: 0; }
+
+/* ---- JS scroll režim: čáru řídí JS, nedosažené kroky ztlumíme ---- */
+.js-steps .steps__progress { height: 0; }
+.js-steps .step:not(.step--on) .step__badge {
+  background: #fff; border-color: var(--james-violet-200);
+  color: var(--james-violet-200); box-shadow: none; transform: scale(.9);
+}
+.js-steps .step__kicker,
+.js-steps .step h3,
+.js-steps .step p { transition: opacity .5s ease; }
+.js-steps .step:not(.step--on) .step__kicker,
+.js-steps .step:not(.step--on) h3,
+.js-steps .step:not(.step--on) p { opacity: .45; }
 
 @media (prefers-reduced-motion: reduce) {
-  .step, .step__badge { opacity: 1; transform: none; transition: none; }
-  .steps.is-active .steps__progress { transition: none; }
+  .step__badge { transition: none; }
 }
 
 /* ===== SECURITY ===== */
@@ -857,8 +875,6 @@ section { scroll-margin-top: 88px; }
   .hero__grid { grid-template-columns: 1fr; gap: 48px; }
   .hero__media { max-width: 560px; }
   .features__grid { grid-template-columns: repeat(2, 1fr); }
-  .steps { grid-template-columns: repeat(2, 1fr); }
-  .steps__track { display: none; }
   .security__layout, .team__layout, .contact__layout, .group__card { grid-template-columns: 1fr; gap: 40px; }
   .fnc__row { grid-template-columns: 1fr; gap: 28px; }
   .fnc__row:nth-child(even) .fnc__media { order: 0; }
@@ -870,7 +886,12 @@ section { scroll-margin-top: 88px; }
 }
 @media (max-width: 640px) {
   .container { padding-inline: 20px; }
-  .features__grid, .steps, .security__badges { grid-template-columns: 1fr; }
+  .features__grid, .security__badges { grid-template-columns: 1fr; }
+  .step { grid-template-columns: 56px 1fr; column-gap: 18px; padding-bottom: 44px; }
+  .step__badge { width: 56px; height: 56px; }
+  .step__badge svg { width: 26px; height: 26px; }
+  .steps__track { left: 26px; }
+  .step h3 { font-size: 21px; }
   .team__people { grid-template-columns: 1fr 1fr; }
   /* pricing: vodorovný scroll na úzkých displejích */
   .pricing__scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }

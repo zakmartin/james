@@ -176,18 +176,60 @@
     });
   }
 
-  /* ===== Steps timeline (animace na scroll) ===== */
-  var steps = $('#steps');
-  if (steps) {
-    if ('IntersectionObserver' in window) {
-      var sio = new IntersectionObserver(function (entries) {
-        entries.forEach(function (en) {
-          if (en.isIntersecting) { en.target.classList.add('is-active'); sio.unobserve(en.target); }
+  /* ===== How it works — vertikální timeline řízená scrollem =====
+     JS nastaví výšku čáry (.steps__progress) podle pozice scrollu vůči
+     referenční lince (62 % výšky okna) a každému kroku přepne .step--on,
+     jakmile k němu čára dorazí. Bez JS / u reduced-motion zůstává statika. */
+  var stepsEl = $('#steps');
+  if (stepsEl) {
+    var track = $('.steps__track', stepsEl);
+    var bar = $('.steps__progress', stepsEl);
+    var stepEls = $$('.step', stepsEl);
+    var reduceSteps = window.matchMedia &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (!reduceSteps && track && bar && stepEls.length && 'requestAnimationFrame' in window) {
+      stepsEl.classList.add('js-steps');
+      var trackH = 0, offsets = [];
+
+      var measureSteps = function () {
+        var sTop = stepsEl.getBoundingClientRect().top;
+        var first = $('.step__badge', stepEls[0]).getBoundingClientRect();
+        var last = $('.step__badge', stepEls[stepEls.length - 1]).getBoundingClientRect();
+        var firstC = (first.top - sTop) + first.height / 2;
+        var lastC = (last.top - sTop) + last.height / 2;
+        track.style.top = firstC + 'px';
+        trackH = Math.max(0, lastC - firstC);
+        track.style.height = trackH + 'px';
+        offsets = stepEls.map(function (s) {
+          var b = $('.step__badge', s).getBoundingClientRect();
+          return ((b.top - sTop) + b.height / 2) - firstC;
         });
-      }, { threshold: 0.35 });
-      sio.observe(steps);
-    } else {
-      steps.classList.add('is-active');
+      };
+
+      var updateSteps = function () {
+        var t = track.getBoundingClientRect();
+        var ref = window.innerHeight * 0.62;
+        var filled = Math.max(0, Math.min(ref - t.top, trackH));
+        bar.style.height = filled + 'px';
+        stepEls.forEach(function (s, i) {
+          s.classList.toggle('step--on', filled >= offsets[i] - 2);
+        });
+      };
+
+      var queued = false;
+      var onScrollSteps = function () {
+        if (queued) return;
+        queued = true;
+        requestAnimationFrame(function () { updateSteps(); queued = false; });
+      };
+
+      measureSteps(); updateSteps();
+      window.addEventListener('scroll', onScrollSteps, { passive: true });
+      window.addEventListener('resize', function () { measureSteps(); updateSteps(); });
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(function () { measureSteps(); updateSteps(); });
+      }
     }
   }
 
