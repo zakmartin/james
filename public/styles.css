@@ -961,7 +961,7 @@ section {
   grid-template-columns: 1fr 64px 1fr;
   align-items: center;
   column-gap: 40px;
-  padding-bottom: 80px;
+  padding-bottom: 130px;   /* větší rozestup = sekcí se scrolluje pomaleji */
 }
 
 .step:last-child {
@@ -2143,7 +2143,7 @@ section {
   .step {
     grid-template-columns: 52px 1fr;
     column-gap: 16px;
-    padding-bottom: 52px;
+    padding-bottom: 80px;
   }
 
   .steps__track {
