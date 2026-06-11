@@ -530,15 +530,21 @@ section { scroll-margin-top: 88px; }
 .step__content h3 { font-size: 21px; font-weight: 700; margin: 0 0 6px; color: var(--james-ink); }
 .step__content p  { font-size: 15px; color: var(--text-muted); margin: 0; }
 
-/* ---- JS scroll režim: čáru řídí JS, nedosažené kroky ztlumíme ---- */
+/* ---- JS scroll režim: čáru řídí JS; krok uprostřed obrazovky se zvětší,
+        ostatní ustoupí do pozadí (--prom 0..1 počítá JS každý frame) ---- */
 .js-steps .steps__progress { height: 0; }
-.js-steps .step--on .step__badge { transform: scale(1.06); }
-.js-steps .step:not(.step--on) .step__badge {
-  background: #fff; border-color: var(--james-violet-200);
-  color: var(--james-violet-200); box-shadow: none; transform: scale(.94);
+.js-steps .step__badge {
+  transition: transform .15s ease-out, opacity .15s ease-out;
+  transform: scale(calc(.86 + var(--prom, 0) * .26));
+  opacity: calc(.5 + var(--prom, 0) * .5);
 }
-.js-steps .step__content { transition: opacity .45s ease; }
-.js-steps .step:not(.step--on) .step__content { opacity: .5; }
+.js-steps .step__content {
+  transition: transform .15s ease-out, opacity .15s ease-out;
+  transform: scale(calc(.96 + var(--prom, 0) * .06));
+  opacity: calc(.3 + var(--prom, 0) * .7);
+}
+.js-steps .step:nth-child(even) .step__content { transform-origin: right center; }
+.js-steps .step:nth-child(odd)  .step__content { transform-origin: left center; }
 
 @media (prefers-reduced-motion: reduce) {
   .step__badge { transition: none; }

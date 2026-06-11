@@ -177,9 +177,10 @@
   }
 
   /* ===== How it works — vertikální timeline řízená scrollem =====
-     JS nastaví výšku čáry (.steps__progress) podle pozice scrollu vůči
-     referenční lince (62 % výšky okna) a každému kroku přepne .step--on,
-     jakmile k němu čára dorazí. Bez JS / u reduced-motion zůstává statika. */
+     JS plní čáru (.steps__progress) podle scrollu a každému kroku nastaví
+     --prom (0..1) podle blízkosti jeho odznaku ke středu obrazovky — krok
+     uprostřed se zvětší, ostatní ustoupí do pozadí. Bez JS / u
+     reduced-motion zůstává statika (vše plné). */
   var stepsEl = $('#steps');
   if (stepsEl) {
     var track = $('.steps__track', stepsEl);
@@ -190,7 +191,7 @@
 
     if (!reduceSteps && track && bar && stepEls.length && 'requestAnimationFrame' in window) {
       stepsEl.classList.add('js-steps');
-      var trackH = 0, offsets = [];
+      var trackH = 0;
 
       var measureSteps = function () {
         var sTop = stepsEl.getBoundingClientRect().top;
@@ -201,19 +202,20 @@
         track.style.top = firstC + 'px';
         trackH = Math.max(0, lastC - firstC);
         track.style.height = trackH + 'px';
-        offsets = stepEls.map(function (s) {
-          var b = $('.step__badge', s).getBoundingClientRect();
-          return ((b.top - sTop) + b.height / 2) - firstC;
-        });
       };
 
       var updateSteps = function () {
+        var vh = window.innerHeight;
         var t = track.getBoundingClientRect();
-        var ref = window.innerHeight * 0.62;
-        var filled = Math.max(0, Math.min(ref - t.top, trackH));
+        var filled = Math.max(0, Math.min(vh * 0.5 - t.top, trackH));
         bar.style.height = filled + 'px';
-        stepEls.forEach(function (s, i) {
-          s.classList.toggle('step--on', filled >= offsets[i] - 2);
+        // prominence: krok nejblíž středu obrazovky = 1, vzdálené → 0
+        var mid = vh / 2, range = vh * 0.42;
+        stepEls.forEach(function (s) {
+          var b = $('.step__badge', s).getBoundingClientRect();
+          var center = b.top + b.height / 2;   // střed odznaku je neměnný vůči scale
+          var prom = 1 - Math.min(Math.abs(center - mid) / range, 1);
+          s.style.setProperty('--prom', prom.toFixed(3));
         });
       };
 
