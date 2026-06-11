@@ -1,0 +1,21 @@
+/* ===== JamesApp — brand token overrides ===== */
+/* Načítá se po cfg-base.css. Přepisuje pouze --brand-* tokeny skupiny. */
+/* Identita: produktová fialová značka James (CFG Tech). */
+:root {
+  --brand-bg:               #15082e; /* tmavé pozadí — nav, hero, footer */
+  --brand-bg-rgb:           21, 8, 46;
+  --brand-darker:           #0d0420; /* tmavší — form karty, kontaktní karty */
+  --brand-surface:          #f4f0fb; /* světlý fialový povrch */
+  --brand-accent:           #7c3aed; /* CTA fialová */
+  --brand-text-on-dark:     #efe9fb;
+  --brand-text-on-dark-rgb: 239, 233, 251;
+
+  /* Doplňkové produktové tokeny (jen pro JamesApp) */
+  --james-accent-2:   #a855f7; /* světlejší fialová pro gradienty */
+  --james-violet-50:  #f6f2fd;
+  --james-violet-100: #ede4fb;
+  --james-violet-200: #d9c6f6;
+  --james-ink:        #1c1430; /* tmavý text na světlém */
+  --james-radius:     16px;
+  --james-radius-lg:  24px;
+}
