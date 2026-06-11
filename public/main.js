@@ -235,6 +235,38 @@
     }
   }
 
+  /* ===== Hero — počítadla přesvědčivých čísel ===== */
+  var statNums = $$('.hero__stat-num');
+  if (statNums.length) {
+    var reduceStats = window.matchMedia &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var renderStat = function (el, val) {
+      el.textContent = val + (el.getAttribute('data-suffix') || '');
+    };
+    if (reduceStats || !('requestAnimationFrame' in window)) {
+      statNums.forEach(function (el) {
+        renderStat(el, parseFloat(el.getAttribute('data-count')) || 0);
+      });
+    } else {
+      statNums.forEach(function (el) { renderStat(el, 0); });
+      var easeOutStat = function (t) { return 1 - Math.pow(1 - t, 3); };
+      var startCounters = function () {
+        statNums.forEach(function (el) {
+          var target = parseFloat(el.getAttribute('data-count')) || 0;
+          var dur = 1500, t0 = null;
+          var tick = function (ts) {
+            if (t0 === null) t0 = ts;
+            var p = Math.min((ts - t0) / dur, 1);
+            renderStat(el, Math.round(target * easeOutStat(p)));
+            if (p < 1) requestAnimationFrame(tick);
+          };
+          requestAnimationFrame(tick);
+        });
+      };
+      window.setTimeout(startCounters, 650);
+    }
+  }
+
   /* ===== Cookie bar ===== */
   var cookie = $('#cookie');
   if (cookie) {

@@ -233,6 +233,31 @@ section { scroll-margin-top: 88px; }
   background: rgba(82,199,110,.18); color: var(--green);
   font-size: 12px; font-weight: 700;
 }
+/* Hero — přesvědčivá čísla */
+.hero__stats {
+  display: flex; flex-wrap: wrap; gap: 26px 44px;
+  margin-top: 40px; padding-top: 28px;
+  border-top: 1px solid rgba(255,255,255,.12);
+  list-style: none;
+}
+.hero__stat { display: flex; flex-direction: column; }
+.hero__stat-num {
+  font-family: var(--f-head);
+  font-size: clamp(30px, 3.6vw, 40px);
+  font-weight: 800; line-height: 1; color: #fff;
+  font-variant-numeric: tabular-nums;   /* číslice nepoposkakují při počítání */
+}
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .hero__stat-num {
+    background: linear-gradient(135deg, #fff 35%, var(--james-accent-2));
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent;
+  }
+}
+.hero__stat-label {
+  margin-top: 8px; font-size: 13.5px; line-height: 1.35;
+  color: rgba(255,255,255,.6); max-width: 18ch;
+}
 /* Hero media */
 .hero__media {
   position: relative;
@@ -314,6 +339,7 @@ section { scroll-margin-top: 88px; }
   .hero__sub  { animation: heroUp .7s cubic-bezier(.22,1,.36,1) .32s both; }
   .hero__cta  { animation: heroUp .7s cubic-bezier(.22,1,.36,1) .44s both; }
   .hero__note { animation: heroUp .7s cubic-bezier(.22,1,.36,1) .54s both; }
+  .hero__stats { animation: heroUp .7s cubic-bezier(.22,1,.36,1) .64s both; }
 
   /* 2) Příjezd karty → nekonečné plování (poslední animace má při
         kolizi transformu přednost, takže navazují bez skoku) */
