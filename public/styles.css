@@ -499,7 +499,7 @@ section { scroll-margin-top: 88px; }
   grid-template-columns: 1fr 64px 1fr;
   align-items: center;
   column-gap: 40px;
-  padding-bottom: 44px;
+  padding-bottom: 80px;
 }
 .step:last-child { padding-bottom: 0; }
 
@@ -892,7 +892,7 @@ section { scroll-margin-top: 88px; }
 @media (max-width: 640px) {
   .container { padding-inline: 20px; }
   .features__grid, .security__badges { grid-template-columns: 1fr; }
-  .step { grid-template-columns: 52px 1fr; column-gap: 16px; padding-bottom: 34px; }
+  .step { grid-template-columns: 52px 1fr; column-gap: 16px; padding-bottom: 52px; }
   .steps__track { left: 26px; transform: none; }
   .step__badge { grid-column: 1; width: 52px; height: 52px; }
   .step__badge svg { width: 24px; height: 24px; }
