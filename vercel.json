@@ -1,0 +1,10 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    { "source": "/registrace", "destination": "https://emitent.jamesapp.cz", "permanent": true },
+    { "source": "/reistrace", "destination": "/registrace", "permanent": true },
+    { "source": "/uvodni-stranka", "destination": "/", "permanent": true },
+    { "source": "/home", "destination": "/", "permanent": true }
+  ]
+}
