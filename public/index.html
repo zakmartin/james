@@ -86,7 +86,7 @@
           <p class="hero__sub">James automatizuje celý životní cyklus emise — od online objednávky přes párování plateb až po výplatu výnosů a splacení jistiny.</p>
           <div class="hero__cta">
             <a class="btn btn--primary btn--lg" href="/registrace" data-trial>Vyzkoušet zdarma</a>
-            <a class="btn btn--ghost-on-dark btn--lg" href="#kontakt">Chci ukázku na míru</a>
+            <a class="btn btn--ghost-on-dark btn--lg" href="#kontakt" data-trial>Chci ukázku na míru</a>
           </div>
           <p class="hero__note">14 dní zdarma · bez zadání platební karty</p>
         </div>
@@ -117,11 +117,11 @@
       <div class="container">
         <p class="logos__label">Důvěřují nám emitenti napříč obory</p>
         <div class="logos__row">
-          <span class="logos__item">Silverline</span>
-          <span class="logos__item">Real Luxembourg</span>
-          <span class="logos__item"><img src="/assets/img/client-cee.png" alt="CEE Real Estate"></span>
-          <span class="logos__item">Buffler</span>
-          <span class="logos__item">Holdingtex</span>
+          <span class="logos__item"><img src="/assets/img/logo_silverline.png" alt="Silverline Real Estate" loading="lazy"></span>
+          <span class="logos__item"><img src="/assets/img/logo_lux.png" alt="Real Luxembourg" loading="lazy"></span>
+          <span class="logos__item"><img src="/assets/img/logo_cee.png" alt="CEE Real Estate" loading="lazy"></span>
+          <span class="logos__item"><img src="/assets/img/logo_buffler.png" alt="Buffler" loading="lazy"></span>
+          <span class="logos__item"><img src="/assets/img/holdingtex.png" alt="Holdingtex" loading="lazy"></span>
         </div>
       </div>
     </section>
@@ -166,7 +166,7 @@
             <p>Plynulý převod investorů z jedné emise na novou — hlídání vrácení dluhopisů i možnost navýšení investice.</p>
           </article>
         </div>
-        <p style="margin-top:40px"><a class="btn btn--ghost" href="/funkce">Kompletní seznam všech funkcí →</a></p>
+        <p style="margin-top:48px;text-align:center"><a class="btn btn--primary btn--lg" href="/funkce">Kompletní seznam všech funkcí →</a></p>
       </div>
     </section>
 
@@ -231,12 +231,6 @@
           <h2>Vaše data v bezpečí na enterprise úrovni</h2>
           <p>Splňujeme přísné mezinárodní standardy a certifikace. Používáme šifrování dat, řízení přístupů, síťovou izolaci, pravidelné zálohování i proaktivní monitoring a detekci.</p>
         </div>
-        <div class="security__badges reveal">
-          <div class="cert"><span class="cert__mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z" stroke-linejoin="round"/></svg></span><span><strong>ISO 27001</strong>Řízení bezpečnosti informací</span></div>
-          <div class="cert"><span class="cert__mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z" stroke-linejoin="round"/></svg></span><span><strong>SOC 1–3</strong>Auditované kontroly</span></div>
-          <div class="cert"><span class="cert__mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z" stroke-linejoin="round"/></svg></span><span><strong>PCI DSS Level 1</strong>Nejvyšší standard plateb</span></div>
-          <div class="cert"><span class="cert__mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z" stroke-linejoin="round"/></svg></span><span><strong>GDPR</strong>Ochrana osobních údajů</span></div>
-        </div>
       </div>
     </section>
 
@@ -248,105 +242,46 @@
           <h2>Vyberte si svůj plán</h2>
           <p>Začněte zdarma s online objednávkami, nebo automatizujte celou správu emise s tarifem Pro.</p>
         </div>
-        <div class="pricing__scroll reveal">
-          <div class="pricing__table">
-            <!-- Header row -->
-            <div class="pricing__col-head pricing__col-head--feature"></div>
-            <div class="pricing__col-head">
-              <div class="pricing__plan">Starter</div>
-              <div class="pricing__price">Zdarma</div>
-              <div class="pricing__tagline">Nechte investory objednávat dluhopisy online.</div>
-            </div>
-            <div class="pricing__col-head pricing__col-head--pro">
-              <span class="pricing__badge">Doporučujeme</span>
-              <div class="pricing__plan">Pro</div>
-              <div class="pricing__price">od 2 990 Kč <small>/ měsíc</small></div>
-              <div class="pricing__tagline">Kompletní automatizace bez vstupních poplatků.</div>
-            </div>
+        <div class="pricing__cards reveal">
+          <!-- Starter -->
+          <div class="pricing__card">
+            <div class="pricing__plan">Starter</div>
+            <div class="pricing__price">Zdarma</div>
+            <p class="pricing__tagline">Nechte investory objednávat dluhopisy online.</p>
+            <a class="btn btn--ghost btn--block" href="/registrace" data-trial>Začít zdarma</a>
+            <ul class="pricing__list">
+              <li>Online objednávka dluhopisů na pár kliků</li>
+              <li>1 emitent a 1 emise ve správě</li>
+            </ul>
+          </div>
 
-            <!-- Rows — kompletní seznam funkcí (Starter = jen online objednávka + 1/1, ostatní Pro) -->
-            <div class="pricing__cell pricing__cell--feature pricing__feature-name">Online objednávka dluhopisů na pár kliků</div>
-            <div class="pricing__cell pricing__cell--val"><span class="tick">✓</span></div>
-            <div class="pricing__cell pricing__cell--val"><span class="tick">✓</span></div>
-
-            <div class="pricing__cell pricing__cell--feature pricing__feature-name">Vlastní branding v komunikaci a dokumentech</div>
-            <div class="pricing__cell pricing__cell--val"><span class="cross">—</span></div>
-            <div class="pricing__cell pricing__cell--val"><span class="tick">✓</span></div>
-
-            <div class="pricing__cell pricing__cell--feature pricing__feature-name">Automatizované párování plateb investorů</div>
-            <div class="pricing__cell pricing__cell--val"><span class="cross">—</span></div>
-            <div class="pricing__cell pricing__cell--val"><span class="tick">✓</span></div>
-
-            <div class="pricing__cell pricing__cell--feature pricing__feature-name">Chytrý dashboard hlídající všechny objednávky</div>
-            <div class="pricing__cell pricing__cell--val"><span class="cross">—</span></div>
-            <div class="pricing__cell pricing__cell--val"><span class="tick">✓</span></div>
-
-            <div class="pricing__cell pricing__cell--feature pricing__feature-name">Automatické generování všech dokumentů</div>
-            <div class="pricing__cell pricing__cell--val"><span class="cross">—</span></div>
-            <div class="pricing__cell pricing__cell--val"><span class="tick">✓</span></div>
-
-            <div class="pricing__cell pricing__cell--feature pricing__feature-name">Kompletní automatizace online procesů správy emisí</div>
-            <div class="pricing__cell pricing__cell--val"><span class="cross">—</span></div>
-            <div class="pricing__cell pricing__cell--val"><span class="tick">✓</span></div>
-
-            <div class="pricing__cell pricing__cell--feature pricing__feature-name">Automatizace výplat výnosů a jistin, včetně bonusů</div>
-            <div class="pricing__cell pricing__cell--val"><span class="cross">—</span></div>
-            <div class="pricing__cell pricing__cell--val"><span class="tick">✓</span></div>
-
-            <div class="pricing__cell pricing__cell--feature pricing__feature-name">Automatizovaná komunikace s investory</div>
-            <div class="pricing__cell pricing__cell--val"><span class="cross">—</span></div>
-            <div class="pricing__cell pricing__cell--val"><span class="tick">✓</span></div>
-
-            <div class="pricing__cell pricing__cell--feature pricing__feature-name">Kompletní evidence všech údajů a souborů i s historií</div>
-            <div class="pricing__cell pricing__cell--val"><span class="cross">—</span></div>
-            <div class="pricing__cell pricing__cell--val"><span class="tick">✓</span></div>
-
-            <div class="pricing__cell pricing__cell--feature pricing__feature-name">Přehled dluhopisů – vlastníci a kusy volné k prodeji</div>
-            <div class="pricing__cell pricing__cell--val"><span class="cross">—</span></div>
-            <div class="pricing__cell pricing__cell--val"><span class="tick">✓</span></div>
-
-            <div class="pricing__cell pricing__cell--feature pricing__feature-name">Pohodlný import stávajících emisí</div>
-            <div class="pricing__cell pricing__cell--val"><span class="cross">—</span></div>
-            <div class="pricing__cell pricing__cell--val"><span class="tick">✓</span></div>
-
-            <div class="pricing__cell pricing__cell--feature pricing__feature-name">Správa obchodní sítě a automatizace výplat odměn</div>
-            <div class="pricing__cell pricing__cell--val"><span class="cross">—</span></div>
-            <div class="pricing__cell pricing__cell--val"><span class="tick">✓</span></div>
-
-            <div class="pricing__cell pricing__cell--feature pricing__feature-name">Kompletní odbavení rolování investorů mezi emisemi</div>
-            <div class="pricing__cell pricing__cell--val"><span class="cross">—</span></div>
-            <div class="pricing__cell pricing__cell--val"><span class="tick">✓</span></div>
-
-            <div class="pricing__cell pricing__cell--feature pricing__feature-name">Řešení výjimečných událostí</div>
-            <div class="pricing__cell pricing__cell--val"><span class="cross">—</span></div>
-            <div class="pricing__cell pricing__cell--val"><span class="tick">✓</span></div>
-
-            <div class="pricing__cell pricing__cell--feature pricing__feature-name">Prioritní podpora</div>
-            <div class="pricing__cell pricing__cell--val"><span class="cross">—</span></div>
-            <div class="pricing__cell pricing__cell--val"><span class="tick">✓</span></div>
-
-            <div class="pricing__cell pricing__cell--feature pricing__feature-name">Školení a konzultace zdarma</div>
-            <div class="pricing__cell pricing__cell--val"><span class="cross">—</span></div>
-            <div class="pricing__cell pricing__cell--val"><span class="tick">✓</span></div>
-
-            <div class="pricing__cell pricing__cell--feature pricing__feature-name">Implementace vlastních požadavků na míru za sníženou cenu</div>
-            <div class="pricing__cell pricing__cell--val"><span class="cross">—</span></div>
-            <div class="pricing__cell pricing__cell--val"><span class="tick">✓</span></div>
-
-            <div class="pricing__cell pricing__cell--feature pricing__feature-name">Počet emitentů ve správě</div>
-            <div class="pricing__cell pricing__cell--val">1</div>
-            <div class="pricing__cell pricing__cell--val">neomezeně</div>
-
-            <div class="pricing__cell pricing__cell--feature pricing__feature-name">Počet emisí ve správě</div>
-            <div class="pricing__cell pricing__cell--val">1</div>
-            <div class="pricing__cell pricing__cell--val">neomezeně</div>
-
-            <!-- CTA row -->
-            <div class="pricing__row-group pricing__cta-row">
-              <div class="pricing__cell pricing__cell--feature"></div>
-              <div class="pricing__cell pricing__cell--val"><a class="btn btn--light" href="/registrace" data-trial>Začít zdarma</a></div>
-              <div class="pricing__cell pricing__cell--val"><a class="btn btn--primary" href="#kontakt">Domluvit Pro</a></div>
-            </div>
+          <!-- Pro -->
+          <div class="pricing__card pricing__card--pro">
+            <span class="pricing__badge">Doporučujeme</span>
+            <div class="pricing__plan">Pro</div>
+            <div class="pricing__price">od 2 990 Kč <small>/ měsíc</small></div>
+            <p class="pricing__tagline">Kompletní automatizace bez vstupních poplatků.</p>
+            <a class="btn btn--primary btn--block" href="#kontakt" data-trial>Domluvit Pro</a>
+            <p class="pricing__list-head">Vše ze Starteru a navíc:</p>
+            <ul class="pricing__list pricing__list--cols">
+              <li>Neomezeně emitentů i emisí ve správě</li>
+              <li>Vlastní branding v komunikaci a dokumentech</li>
+              <li>Automatizované párování plateb investorů</li>
+              <li>Chytrý dashboard hlídající všechny objednávky</li>
+              <li>Automatické generování všech dokumentů</li>
+              <li>Kompletní automatizace správy emisí</li>
+              <li>Automatizace výplat výnosů a jistin, včetně bonusů</li>
+              <li>Automatizovaná komunikace s investory</li>
+              <li>Kompletní evidence údajů a souborů i s historií</li>
+              <li>Přehled dluhopisů – vlastníci a kusy volné k prodeji</li>
+              <li>Pohodlný import stávajících emisí</li>
+              <li>Správa obchodní sítě a výplata odměn</li>
+              <li>Odbavení rolování investorů mezi emisemi</li>
+              <li>Řešení výjimečných událostí</li>
+              <li>Prioritní podpora</li>
+              <li>Školení a konzultace zdarma</li>
+              <li>Úpravy na míru za sníženou cenu</li>
+            </ul>
           </div>
         </div>
         <p class="pricing__note">Trial jakéhokoliv tarifu (včetně Pro) na <strong>14 dní zdarma</strong>, bez vstupních poplatků a bez platební karty. Cena Pro se odvíjí od objemu aktivních emisí.</p>
@@ -365,46 +300,43 @@
         <div class="testi-stats reveal">
           <div class="testi-stat"><span class="testi-stat__num">75 %</span><span class="testi-stat__label">úspora času oproti ruční správě</span></div>
           <div class="testi-stat"><span class="testi-stat__num">desítky</span><span class="testi-stat__label">spokojených emitentů</span></div>
-          <div class="testi-stat"><span class="testi-stat__num">stovky</span><span class="testi-stat__label">obsloužených investorů</span></div>
+          <div class="testi-stat"><span class="testi-stat__num">tisíce</span><span class="testi-stat__label">obsloužených investorů</span></div>
           <div class="testi-stat"><span class="testi-stat__num">100 %</span><span class="testi-stat__label">online, dostupné 24/7</span></div>
         </div>
 
-        <div class="testi-wrap">
-          <figure class="testi testi--feature reveal">
+        <div class="testi-grid">
+          <figure class="testi reveal">
             <div class="testi__stars" aria-label="Hodnocení 5 z 5">★★★★★</div>
             <blockquote class="testi__quote">CRM systém JAMES využíváme pro kompletní správu emise dluhopisů — od úkonů spojených s úpisem, přes komunikaci s investory až po výpočet a výplatu úrokových výnosů. V porovnání s předchozí emisí, kdy jsme si správu dělali sami, nám díky automatizaci <span class="hl">šetří 75 % času</span>.</blockquote>
             <figcaption class="testi__foot">
-              <span class="avatar">RO</span>
+              <img class="avatar avatar--img" src="/assets/img/robert.png" alt="Ing. Robert Olschbaur" loading="lazy">
               <span class="testi__who"><span class="testi__name">Ing. Robert Olschbaur</span><span class="testi__role">Jednatel a majitel, RTL Czech s.r.o.</span></span>
             </figcaption>
           </figure>
-
-          <div class="testi__grid">
-            <figure class="testi reveal">
-              <div class="testi__stars" aria-label="Hodnocení 5 z 5">★★★★★</div>
-              <blockquote class="testi__quote">Díky aplikaci James jsme získali <span class="hl">desítky investorů, kteří opakovaně objednávají dluhopisy online</span>. Dokážeme je rychle odbavit a pohlídat si všechny výplaty i platby.</blockquote>
-              <figcaption class="testi__foot">
-                <span class="avatar">RM</span>
-                <span class="testi__who"><span class="testi__name">Radek Michalčík</span><span class="testi__role">Jednatel a majitel, Buffler</span></span>
-              </figcaption>
-            </figure>
-            <figure class="testi reveal">
-              <div class="testi__stars" aria-label="Hodnocení 5 z 5">★★★★★</div>
-              <blockquote class="testi__quote">Díky aplikaci James je správa emisí velmi jednoduchá a uživatelsky přívětivá. Vše na pár kliknutí na jednom místě. Oceňuji i to, že se systém neustále zlepšuje.</blockquote>
-              <figcaption class="testi__foot">
-                <span class="avatar">VB</span>
-                <span class="testi__who"><span class="testi__name">Vojtěch Brix</span><span class="testi__role">Co-founder &amp; Investment Manager, Silverline Real Estate</span></span>
-              </figcaption>
-            </figure>
-            <figure class="testi reveal">
-              <div class="testi__stars" aria-label="Hodnocení 5 z 5">★★★★★</div>
-              <blockquote class="testi__quote">Naše společnost vydala už několik emisí pod různými firmami. Bez Jamese bychom týdně trávili hodiny nad administrativou a hlídáním plateb — to aplikace zvládne sama.</blockquote>
-              <figcaption class="testi__foot">
-                <span class="avatar">RS</span>
-                <span class="testi__who"><span class="testi__name">Radek Slabyhoud</span><span class="testi__role">Majitel skupiny Real Luxembourg</span></span>
-              </figcaption>
-            </figure>
-          </div>
+          <figure class="testi reveal">
+            <div class="testi__stars" aria-label="Hodnocení 5 z 5">★★★★★</div>
+            <blockquote class="testi__quote">Díky aplikaci James jsme získali <span class="hl">desítky investorů, kteří opakovaně objednávají dluhopisy online</span>. Dokážeme je rychle odbavit a pohlídat si všechny výplaty i platby.</blockquote>
+            <figcaption class="testi__foot">
+              <img class="avatar avatar--img" src="/assets/img/radek.png" alt="Radek Michalčík" loading="lazy">
+              <span class="testi__who"><span class="testi__name">Radek Michalčík</span><span class="testi__role">Jednatel a majitel, Buffler</span></span>
+            </figcaption>
+          </figure>
+          <figure class="testi reveal">
+            <div class="testi__stars" aria-label="Hodnocení 5 z 5">★★★★★</div>
+            <blockquote class="testi__quote">Díky aplikaci James je správa emisí velmi jednoduchá a uživatelsky přívětivá. Vše na pár kliknutí na jednom místě. Oceňuji i to, že se systém neustále zlepšuje.</blockquote>
+            <figcaption class="testi__foot">
+              <img class="avatar avatar--img" src="/assets/img/vojtechbrix.png" alt="Vojtěch Brix" loading="lazy">
+              <span class="testi__who"><span class="testi__name">Vojtěch Brix</span><span class="testi__role">Co-founder &amp; Investment Manager, Silverline Real Estate</span></span>
+            </figcaption>
+          </figure>
+          <figure class="testi reveal">
+            <div class="testi__stars" aria-label="Hodnocení 5 z 5">★★★★★</div>
+            <blockquote class="testi__quote">Naše společnost vydala už několik emisí pod různými firmami. Bez Jamese bychom týdně trávili hodiny nad administrativou a hlídáním plateb — to aplikace zvládne sama.</blockquote>
+            <figcaption class="testi__foot">
+              <img class="avatar avatar--img" src="/assets/img/slabyhoud.png" alt="Radek Slabyhoud" loading="lazy">
+              <span class="testi__who"><span class="testi__name">Radek Slabyhoud</span><span class="testi__role">Majitel skupiny Real Luxembourg</span></span>
+            </figcaption>
+          </figure>
         </div>
       </div>
     </section>
@@ -414,13 +346,12 @@
       <div class="container team__layout">
         <div class="reveal">
           <span class="eyebrow">Náš tým</span>
-          <h2 style="font-size:clamp(28px,3.5vw,42px);font-weight:700;letter-spacing:-.02em;margin-top:16px">Zkušený tým developerů, který se o vás stará</h2>
-          <p class="muted" style="margin-top:18px;font-size:17px">Jsme tým 15 vývojářů a profesionálů s bohatými zkušenostmi. O Jamese i o vás se staráme každý den a vyvíjíme funkce na míru.</p>
+          <h2 style="font-size:clamp(28px,3.5vw,42px);font-weight:700;letter-spacing:-.02em;margin-top:16px">Zkušený tým, který se o vás stará</h2>
+          <p class="muted" style="margin-top:18px;font-size:17px">Za Jamesem stojí <strong>CFG Tech a.s.</strong> — technologická firma skupiny CFG s týmem 15 vývojářů a profesionálů. O aplikaci i o vás se staráme každý den a vyvíjíme funkce na míru.</p>
         </div>
-        <div class="team__people reveal">
-          <div class="person"><span class="avatar">DL</span><h4>Dominik Lamacz</h4><span>Product owner</span></div>
-          <div class="person"><span class="avatar">MK</span><h4>Maroš Kasinec</h4><span>CTO</span></div>
-          <div class="person"><span class="avatar">JČ</span><h4>Jan Čaban</h4><span>Technická podpora</span></div>
+        <div class="team__company reveal">
+          <img src="/assets/img/cfg-tech.png" alt="CFG Tech a.s." class="team__company-logo">
+          <p>Vývoj a provoz Jamese — na trhu od roku 2017.</p>
         </div>
       </div>
     </section>
@@ -443,7 +374,6 @@
               <li style="display:flex;gap:12px;align-items:flex-start"><span class="tick">✓</span> Jediný specializovaný český nástroj pro celý životní cyklus emise</li>
               <li style="display:flex;gap:12px;align-items:flex-start"><span class="tick">✓</span> Vlastní vývojový tým 15 lidí — funkce na míru</li>
               <li style="display:flex;gap:12px;align-items:flex-start"><span class="tick">✓</span> Postaveno na praxi s desítkami emitentů z Dluhopisomatu</li>
-              <li style="display:flex;gap:12px;align-items:flex-start"><span class="tick">✓</span> Bezbariérový vstup — Starter zdarma</li>
             </ul>
           </div>
         </div>
@@ -456,7 +386,7 @@
         <div class="section-head section-head--center reveal">
           <span class="eyebrow">Časté dotazy</span>
           <h2>Nejčastější dotazy k fungování Jamese</h2>
-          <p>Na dotazy odpovídá Dominik Lamacz, product owner JamesApp.</p>
+          <p>Odpovědi na to, co emitenty zajímá nejčastěji. Něco vám není jasné? Ozvěte se nám.</p>
         </div>
         <div class="faq__list">
           <div class="faq__item"><button class="faq__q" aria-expanded="false">Je možné začít používat Jamese, i když už máme existující emisi?</button><div class="faq__a"><p>Ano, již rozběhlé emise jednoduše naimportujete do Jamese včetně všech údajů o objednávkách, investorech i investicích. Do několika hodin budete emise spravovat na úplně jiné úrovni. Importovat lze i ukončené emise pro archivní účely — historické emise máte v Jamesovi zdarma.</p></div></div>
@@ -486,10 +416,6 @@
           <span class="eyebrow eyebrow--on-dark">Kontakt &amp; demo</span>
           <h2>Začněte spravovat svou emisi ještě dnes</h2>
           <p class="contact__lead">Zavolejte nám nebo vyplňte formulář — rádi vám poskytneme přístup do trial verze a zodpovíme veškeré dotazy.</p>
-          <div class="contact__personal">
-            <span class="avatar">DL</span>
-            <p>„Dobrý den, rádi vám na požádání poskytneme přístup do trial verze aplikace a zodpovíme dotazy.“<br><strong>Dominik Lamacz</strong>, product owner</p>
-          </div>
           <div class="contact__phone">
             <span class="muted" style="color:rgba(255,255,255,.6);font-size:14px">Zavolejte nám</span><br>
             <a href="tel:+420770181045">+420 770 181 045</a>
@@ -501,8 +427,8 @@
         </div>
 
         <div class="reveal">
-          <form class="lead-card" id="lead-form" novalidate>
-            <h3>Domluvit ukázku na míru</h3>
+          <form class="lead-card" id="lead-form" data-lead-form novalidate>
+            <h3>Nezávazná poptávka</h3>
             <div class="field">
               <label for="lf-name">Jméno a příjmení *</label>
               <input id="lf-name" name="name" type="text" autocomplete="name" placeholder="Jan Novák" required>
@@ -555,15 +481,6 @@
           <a href="/registrace" data-trial>Vyzkoušet zdarma</a>
         </div>
         <div class="jfooter__col">
-          <h4>Skupina CFG</h4>
-          <a href="https://cfg.cz" target="_blank" rel="noopener">CFG.cz</a>
-          <a href="https://cfgtech.cz" target="_blank" rel="noopener">CFG Tech</a>
-          <a href="https://comfortmoney.cz" target="_blank" rel="noopener">Comfort Money</a>
-          <a href="https://firemnizalozna.cz" target="_blank" rel="noopener">Firemní záložna</a>
-          <a href="https://cfgre.cz" target="_blank" rel="noopener">CFG Real Estate</a>
-          <a href="https://abpohledavky.cz" target="_blank" rel="noopener">AB Pohledávky</a>
-        </div>
-        <div class="jfooter__col">
           <h4>Kontakt</h4>
           <a href="tel:+420770181045">+420 770 181 045</a>
           <a href="mailto:info@jamesapp.cz">info@jamesapp.cz</a>
@@ -574,7 +491,6 @@
         <span>© 2026 CFG Tech a.s. · IČ 06504591</span>
         <nav class="jfooter__legal" aria-label="Právní odkazy">
           <a href="/zpracovani-osobnich-udaju">Zpracování osobních údajů</a>
-          <a href="/obchodni-podminky">Obchodní podmínky</a>
         </nav>
       </div>
     </div>
@@ -589,12 +505,41 @@
     </div>
   </div>
 
-  <!-- ===== TRIAL MODAL (Typeform) ===== -->
-  <div class="modal" id="trial-modal" aria-hidden="true" role="dialog" aria-label="Vyzkoušet zdarma">
+  <!-- ===== KONTAKTNÍ MODAL (formulář) ===== -->
+  <div class="modal modal--form" id="trial-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Kontaktní formulář">
     <div class="modal__overlay" data-close></div>
     <div class="modal__dialog">
       <button class="modal__close" data-close aria-label="Zavřít">&times;</button>
-      <iframe title="Registrace JamesApp" loading="lazy" allow="camera; microphone; autoplay; encrypted-media;"></iframe>
+      <form class="lead-card" data-lead-form novalidate>
+        <h3>Vyzkoušejte James</h3>
+        <p class="lead-card__sub">Nechte nám kontakt a my se vám do 24 hodin ozveme — s přístupem do trial verze i odpověďmi na vaše dotazy.</p>
+        <div class="field">
+          <label for="mf-name">Jméno a příjmení *</label>
+          <input id="mf-name" name="name" type="text" autocomplete="name" placeholder="Jan Novák" required>
+        </div>
+        <div class="field--row">
+          <div class="field">
+            <label for="mf-email">E-mail</label>
+            <input id="mf-email" name="email" type="email" autocomplete="email" placeholder="jan@firma.cz">
+          </div>
+          <div class="field">
+            <label for="mf-phone">Telefon</label>
+            <input id="mf-phone" name="phone" type="tel" autocomplete="tel" placeholder="+420 …">
+          </div>
+        </div>
+        <div class="field">
+          <label for="mf-company">Společnost <span class="muted" style="font-weight:400">(nepovinné)</span></label>
+          <input id="mf-company" name="company" type="text" autocomplete="organization" placeholder="Název společnosti">
+        </div>
+        <!-- honeypot -->
+        <div class="hp" aria-hidden="true"><label>Web<input name="website" tabindex="-1" autocomplete="off"></label></div>
+        <div class="gdpr">
+          <input id="mf-gdpr" name="gdpr" type="checkbox" required>
+          <label for="mf-gdpr">Souhlasím se <a href="/zpracovani-osobnich-udaju">zpracováním osobních údajů</a> za účelem zpětného kontaktu.</label>
+        </div>
+        <button class="btn btn--primary btn--block btn--lg" type="submit">Odeslat poptávku</button>
+        <p class="form-status" role="status" aria-live="polite"></p>
+      </form>
     </div>
   </div>
 

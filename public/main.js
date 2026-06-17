@@ -3,10 +3,6 @@
 (function () {
   'use strict';
 
-  /* >>> Typeform: nahraď ID skutečným formulářem registrace/poptávky <<< */
-  var TYPEFORM_ID = 'XXXXXXXX';
-  var TYPEFORM_URL = 'https://form.typeform.com/to/' + TYPEFORM_ID;
-
   var $ = function (s, c) { return (c || document).querySelector(s); };
   var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
 
@@ -48,7 +44,7 @@
     });
   }
 
-  /* ===== Modaly (typeform + video) ===== */
+  /* ===== Modaly (kontaktní formulář + video) ===== */
   function openModal(modal) {
     if (!modal) return;
     modal.setAttribute('aria-hidden', 'false');
@@ -62,15 +58,20 @@
     if (v) { v.pause(); v.currentTime = 0; }
   }
 
+  /* Všechna konverzní tlačítka ([data-trial]) otevřou kontaktní modal s formulářem */
   var trialModal = $('#trial-modal');
   if (trialModal) {
-    var iframe = $('iframe', trialModal);
-    var loaded = false;
     $$('[data-trial]').forEach(function (btn) {
       btn.addEventListener('click', function (e) {
         e.preventDefault();
-        if (!loaded && iframe) { iframe.src = TYPEFORM_URL; loaded = true; }
+        // zavři mobilní menu, pokud je otevřené
+        if (nav && nav.classList.contains('jnav--open')) {
+          nav.classList.remove('jnav--open');
+          if (burger) burger.setAttribute('aria-expanded', 'false');
+        }
         openModal(trialModal);
+        var first = $('input:not([tabindex="-1"]), textarea', trialModal);
+        if (first) window.setTimeout(function () { try { first.focus(); } catch (err) {} }, 60);
       });
     });
   }
@@ -85,6 +86,22 @@
     });
   });
 
+  /* Lightbox — klik na obrázek funkce otevře jeho velký náhled */
+  var imageModal = $('#image-modal');
+  if (imageModal) {
+    var lightboxImg = $('#image-modal-img', imageModal);
+    $$('.fnc__media img').forEach(function (img) {
+      img.style.cursor = 'zoom-in';
+      img.addEventListener('click', function () {
+        if (lightboxImg) {
+          lightboxImg.src = img.currentSrc || img.src;
+          lightboxImg.alt = img.alt || '';
+        }
+        openModal(imageModal);
+      });
+    });
+  }
+
   $$('.modal').forEach(function (modal) {
     $$('[data-close], .modal__overlay', modal).forEach(function (el) {
       el.addEventListener('click', function () { closeModal(modal); });
@@ -95,9 +112,15 @@
   });
 
   /* ===== Lead form ===== */
-  var form = $('#lead-form');
-  if (form) {
+  // Web může mít více kontaktních formulářů (inline v sekci + v modalu).
+  $$('form[data-lead-form]').forEach(function (form) {
     var status = $('.form-status', form);
+    var setStatus = function (msg, kind) {
+      if (!status) return;
+      status.textContent = msg;
+      status.className = 'form-status' + (kind ? ' form-status--' + kind : '');
+    };
+
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       var data = Object.fromEntries(new FormData(form).entries());
@@ -126,6 +149,8 @@
           if (res.ok) {
             form.reset();
             setStatus('Děkujeme! Ozveme se vám co nejdříve.', 'ok');
+            var inModal = form.closest && form.closest('.modal');
+            if (inModal) window.setTimeout(function () { closeModal(inModal); }, 2400);
           } else {
             setStatus(res.body.error || 'Něco se pokazilo. Zkuste to prosím znovu.', 'err');
           }
@@ -133,13 +158,7 @@
         .catch(function () { setStatus('Spojení selhalo. Zkuste to prosím znovu.', 'err'); })
         .finally(function () { btn.disabled = false; btn.textContent = orig; });
     });
-
-    function setStatus(msg, kind) {
-      if (!status) return;
-      status.textContent = msg;
-      status.className = 'form-status' + (kind ? ' form-status--' + kind : '');
-    }
-  }
+  });
 
   /* ===== Reveal on scroll ===== */
   var reveals = $$('.reveal');

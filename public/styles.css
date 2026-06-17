@@ -1076,10 +1076,9 @@ section {
 }
 
 .security__layout {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 64px;
-  align-items: center;
+  max-width: 720px;
+  margin-inline: auto;
+  text-align: center;
 }
 
 .security h2 {
@@ -1140,31 +1139,24 @@ section {
 }
 
 /* ===== PRICING ===== */
-.pricing__table {
+.pricing__cards {
   display: grid;
-  grid-template-columns: 1.4fr 1fr 1fr;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.pricing__card {
   background: #fff;
   border: 1px solid var(--james-violet-100);
   border-radius: var(--james-radius-lg);
-  overflow: hidden;
+  padding: 32px;
 }
 
-.pricing__cell {
-  padding: 20px 24px;
-  border-bottom: 1px solid var(--james-violet-100);
-}
-
-.pricing__col-head {
-  padding: 32px 24px;
-  border-bottom: 1px solid var(--james-violet-100);
-}
-
-.pricing__col-head--feature {
-  background: var(--james-violet-50);
-}
-
-.pricing__col-head--pro {
+.pricing__card--pro {
+  position: relative;
   background: linear-gradient(180deg, #2a1052, var(--brand-bg));
+  border-color: transparent;
   color: #fff;
 }
 
@@ -1178,7 +1170,7 @@ section {
   font-family: var(--f-head);
   font-size: 32px;
   font-weight: 800;
-  margin-top: 10px;
+  margin-top: 8px;
   letter-spacing: -.02em;
 }
 
@@ -1188,24 +1180,23 @@ section {
   color: var(--text-muted);
 }
 
-.pricing__col-head--pro .pricing__price small {
+.pricing__card--pro .pricing__price small {
   color: rgba(255, 255, 255, .65);
 }
 
 .pricing__tagline {
   font-size: 14px;
   color: var(--text-muted);
-  margin-top: 6px;
-  min-height: 40px;
+  margin: 8px 0 22px;
 }
 
-.pricing__col-head--pro .pricing__tagline {
+.pricing__card--pro .pricing__tagline {
   color: rgba(255, 255, 255, .72);
 }
 
 .pricing__badge {
   display: inline-block;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   font-family: var(--f-ui);
   font-size: 11px;
   font-weight: 700;
@@ -1217,38 +1208,51 @@ section {
   border-radius: var(--r-pill);
 }
 
-.pricing__feature-name {
-  font-weight: 600;
-  color: var(--james-ink);
+.pricing__list-head {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  margin: 28px 0 14px;
+  color: rgba(255, 255, 255, .7);
 }
 
-.pricing__cell--feature {
-  background: var(--james-violet-50);
+.pricing__list {
+  list-style: none;
+  margin: 22px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 12px 28px;
 }
 
-.pricing__row-group {
-  display: contents;
+.pricing__list--cols {
+  grid-template-columns: 1fr 1fr;
+  margin-top: 0;
+}
+
+.pricing__list li {
+  position: relative;
+  padding-left: 26px;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.pricing__list li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-weight: 800;
+  color: var(--green);
+}
+
+.pricing__card--pro .pricing__list li::before {
+  color: var(--james-accent-2);
 }
 
 .tick {
   color: var(--green);
   font-weight: 800;
-}
-
-.cross {
-  color: rgba(28, 20, 48, .25);
-  font-weight: 700;
-}
-
-.pricing__cell--val {
-  text-align: center;
-  font-weight: 700;
-}
-
-.pricing__cta-row .pricing__cell {
-  border-bottom: 0;
-  padding-top: 28px;
-  padding-bottom: 32px;
 }
 
 .pricing__note {
@@ -1295,17 +1299,11 @@ section {
 }
 
 /* Layout: featured + grid */
-.testi-wrap {
+.testi-grid {
   display: grid;
-  grid-template-columns: 1.15fr 1fr;
+  grid-template-columns: repeat(2, 1fr);
   gap: var(--gap);
   align-items: stretch;
-}
-
-.testi__grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--gap);
 }
 
 .testi {
@@ -1419,6 +1417,11 @@ section {
   font-size: 16px;
 }
 
+.avatar--img {
+  object-fit: cover;
+  object-position: center top;
+}
+
 .testi__name {
   font-family: var(--f-head);
   font-weight: 700;
@@ -1465,6 +1468,30 @@ section {
   font-size: 13px;
   color: var(--brand-accent);
   font-weight: 600;
+}
+
+.team__company {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  text-align: center;
+  background: var(--james-violet-50);
+  border: 1px solid var(--james-violet-100);
+  border-radius: var(--james-radius-lg);
+  padding: 48px 40px;
+}
+
+.team__company-logo {
+  width: auto;
+  max-width: 280px;
+  height: auto;
+}
+
+.team__company p {
+  font-size: 15px;
+  color: var(--text-muted);
 }
 
 /* ===== CFG GROUP ===== */
@@ -1737,7 +1764,7 @@ section {
 
 .jfooter__top {
   display: grid;
-  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  grid-template-columns: 1.6fr 1fr 1fr;
   gap: 48px;
   padding-bottom: 56px;
   border-bottom: 1px solid rgba(255, 255, 255, .1);
@@ -1882,6 +1909,90 @@ section {
   width: 100%;
   height: 100%;
   display: block;
+}
+
+/* Modal s kontaktním formulářem — tmavá karta, výška dle obsahu */
+.modal--form .modal__dialog {
+  height: auto;
+  max-height: 92vh;
+  max-width: 520px;
+  margin-top: 5vh;
+  overflow-y: auto;
+  background: var(--brand-darker);
+}
+
+.modal--form .lead-card {
+  border: 0;
+  background: transparent;
+  padding: 40px 36px;
+}
+
+.modal--form .lead-card h3 {
+  padding-right: 40px;
+  margin-bottom: 8px;
+}
+
+.modal--form .modal__close {
+  background: rgba(255, 255, 255, .12);
+  color: #fff;
+}
+
+.modal--form .modal__close:hover {
+  background: rgba(255, 255, 255, .22);
+}
+
+/* Lightbox — velký náhled obrázku */
+.modal--image .modal__dialog {
+  height: auto;
+  max-height: 92vh;
+  max-width: min(1040px, 96vw);
+  width: auto;
+  margin: 5vh auto 0;
+  background: transparent;
+  box-shadow: none;
+  overflow: visible;
+  display: flex;
+}
+
+.modal--image img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  max-height: 92vh;
+  margin: auto;
+  border-radius: var(--james-radius-lg);
+  box-shadow: 0 40px 100px -20px rgba(0, 0, 0, .6);
+}
+
+.modal--image .modal__close {
+  top: -6px;
+  right: -6px;
+  background: #fff;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, .35);
+}
+
+.modal--image .modal__close:hover {
+  background: #fff;
+}
+
+.lead-card__sub {
+  color: rgba(255, 255, 255, .68);
+  font-size: 15px;
+  line-height: 1.55;
+  margin-bottom: 24px;
+}
+
+/* CTA karta v sekci kontakt (otevírá modal) */
+.contact__cta {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact__cta p {
+  color: rgba(255, 255, 255, .72);
+  font-size: 15px;
+  line-height: 1.6;
+  margin: -8px 0 24px;
 }
 
 /* ===== COOKIE BAR (lokální fallback, sjednoceno se skupinou) ===== */
@@ -2055,6 +2166,11 @@ section {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform .45s ease;
+}
+
+.fnc__media:hover img {
+  transform: scale(1.08);
 }
 
 .fnc__media svg {
@@ -2073,6 +2189,13 @@ section {
 @media (max-width: 1024px) {
   .container {
     padding-inline: 28px;
+  }
+
+  /* pricing: karty pod sebe, ať Pro seznam dýchá */
+  .pricing__cards {
+    grid-template-columns: 1fr;
+    max-width: 640px;
+    margin-inline: auto;
   }
 
   .hero__grid {
@@ -2112,11 +2235,16 @@ section {
     display: none;
   }
 
+  /* logo vlevo, akce + burger zarovnané doprava */
+  .jnav__brand {
+    margin-right: auto;
+  }
+
   .jnav__burger {
     display: flex;
   }
 
-  .testi-wrap {
+  .testi-grid {
     grid-template-columns: 1fr;
   }
 
@@ -2176,14 +2304,13 @@ section {
     grid-template-columns: 1fr 1fr;
   }
 
-  /* pricing: vodorovný scroll na úzkých displejích */
-  .pricing__scroll {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
+  /* pricing: karty pod sebe na úzkých displejích */
+  .pricing__cards {
+    grid-template-columns: 1fr;
   }
 
-  .pricing__table {
-    min-width: 560px;
+  .pricing__list--cols {
+    grid-template-columns: 1fr;
   }
 
   .field--row {
@@ -2203,8 +2330,19 @@ section {
     flex: 1;
   }
 
-  /* na úzkém mobilu drží nav jen logo + burger; CTA je v draweru */
-  .jnav__actions {
-    display: none;
+  /* úzký mobil: CTA „Vyzkoušet zdarma" zůstává v liště vedle burgeru */
+  .jnav__inner {
+    gap: 10px;
+    padding-inline: 18px;
+  }
+
+  .jnav__logo-img {
+    height: 38px;
+  }
+
+  .jnav__actions .btn {
+    padding: 8px 14px;
+    font-size: 13px;
+    white-space: nowrap;
   }
 }
